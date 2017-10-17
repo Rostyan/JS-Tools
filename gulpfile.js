@@ -26,7 +26,7 @@ gulp.task('views', function () {
 //create all script files
 gulp.task('scripts', function () {
   gulp.src('./src/scripts/*.js')
-    .pipe(concat('script.js'))
+    .pipe(concat('common.js'))
     .pipe(gulp.dest('./dist/scripts/'));
 });
 
@@ -59,8 +59,18 @@ gulp.task('build', function (done) {
 //add watch process
 gulp.task('watch', function () {
   gulp.watch('src/**/*', ['build']);
-  gulp.watch('src/scripts/**/*.js', ['scripts:lint']);
+});
+
+//add server
+gulp.task('server', function () {
+gulp.src('dist')
+  .pipe(webserver({
+    port: 8800,
+    livereload:  true,
+    directoryListing: false,
+    open: false
+  }));
 });
 
 // default process
-gulp.task('default', gulpSequence('scripts:lint', 'build', 'watch'));
+gulp.task('default', gulpSequence('scripts:lint', 'build', ['server', 'watch']));
