@@ -27,7 +27,9 @@
     "gulp-clean": "^0.3.2",
     "gulp-eslint": "^4.0.0",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-less": "^3.3.2",
-    "gulp-noop": "^1.0.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-noop": "^1.0.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-webserver": "^0.9.1"
   }
 }
