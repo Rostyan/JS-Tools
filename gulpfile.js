@@ -8,8 +8,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 var webserver = require('gulp-webserver');
-var htmlmin = require('gulp-htmlmin');
-var noop = require("gulp-noop");
+var minify = require('gulp-minify');
+
 
 // clear dist directory
 gulp.task('clean', function () {
@@ -26,8 +26,13 @@ gulp.task('views', function () {
 //create all script files
 gulp.task('scripts', function () {
   gulp.src('./src/scripts/*.js')
-    .pipe(concat('common.js'))
-    .pipe(gulp.dest('./dist/scripts/'));
+    .pipe(minify({
+      ext:{
+        src:'ignore.js',
+        min:'.js'
+      },
+     }))
+    .pipe(gulp.dest('./dist/scripts/'))
 });
 
 //inspect style script

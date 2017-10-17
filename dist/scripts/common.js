@@ -1,7 +1,1 @@
-const ab = 'Hello';
-
-function sum(t, y) {
-  return t + y;
-}
-
-sum(ab + 12);
+function sum(n,u){return n+u}const ab="Hello";sum(ab+12);
